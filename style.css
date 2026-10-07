@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Soft scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #e4d8f0;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4c2e2;
+}
+
+/* Markdown Prose Formatting */
+.prose h1, .prose h2, .prose h3 {
+    color: #5a4870;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.prose p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+.prose ul, .prose ol {
+    margin-left: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+.prose ul {
+    list-style-type: disc;
+}
+.prose ol {
+    list-style-type: decimal;
+}
+.prose blockquote {
+    border-left: 4px solid #e4d8f0;
+    padding-left: 1rem;
+    color: #8a7b93;
+    font-style: italic;
+    margin: 1rem 0;
+}

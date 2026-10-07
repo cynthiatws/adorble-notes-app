@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Cozy Notes & Planner ✨</title>
+    <!-- Google Fonts: Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#faf8f5] text-[#5c5552] min-h-screen flex flex-col font-['Quicksand']">
+
+    <!-- Header -->
+    <header class="bg-[#e4d8f0] text-[#5a4870] py-4 shadow-sm border-b border-[#ebdff5]">
+        <div class="container mx-auto px-6 flex justify-between items-center max-w-6xl">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                🌸 Cozy Planner & Notes
+            </h1>
+            <button onclick="openEditor()" class="bg-[#ffb5b5] hover:bg-[#ffa3a3] text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm transform hover:-translate-y-0.5">
+                ✨ New Note
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-6 flex-grow flex flex-col gap-6 max-w-6xl">
+        
+        <!-- Weekly Calendar Bar -->
+        <section class="bg-white p-4 rounded-3xl shadow-sm border border-[#f0eae1]">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-[#8a7b93] mb-3 px-2">📅 Weekly Calendar</h2>
+            <div id="weekly-calendar" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+                <!-- Days injected dynamically -->
+            </div>
+        </section>
+
+        <!-- Lower Section (Notes / Editor) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow">
+            <!-- Notes List Sidebar -->
+            <section class="md:col-span-1 bg-white p-5 rounded-3xl shadow-sm border border-[#f0eae1] flex flex-col h-[calc(100vh-22rem)]">
+                <h2 class="text-md font-bold mb-4 text-[#8a7b93] flex items-center gap-2">
+                    📚 My Journal
+                </h2>
+                <div id="notes-list" class="overflow-y-auto flex-grow space-y-3 pr-1">
+                    <!-- Notes injected dynamically -->
+                </div>
+            </section>
+
+            <!-- Note Editor & Viewer Panel -->
+            <section class="md:col-span-2 bg-white p-6 rounded-3xl shadow-sm border border-[#f0eae1] flex flex-col h-[calc(100vh-22rem)]">
+                <!-- Editor View -->
+                <div id="editor-container" class="flex flex-col h-full hidden">
+                    <input type="text" id="note-title-input" placeholder="✨ Give your note a cute title..." class="text-xl font-bold border-b border-[#f0eae1] pb-3 mb-4 focus:outline-none focus:border-[#d4c2e2] text-[#5a4870] placeholder-[#c4bccb]">
+                    
+                    <!-- To-Do Section Inside Editor -->
+                    <div class="mb-4 bg-[#fcfbf9] p-3 rounded-2xl border border-[#f0eae1]">
+                        <span class="text-xs font-bold text-[#8a7b93] uppercase tracking-wider mb-2 block">📝 To-Do List</span>
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" id="todo-input" placeholder="Add a task..." class="flex-grow text-sm px-3 py-1.5 rounded-xl border border-[#f0eae1] bg-white focus:outline-none focus:ring-2 focus:ring-[#e4d8f0]">
+                            <button onclick="addTodoItem()" class="bg-[#d4c2e2] hover:bg-[#c2b0d2] text-white px-4 py-1.5 rounded-xl text-sm font-semibold transition">Add</button>
+                        </div>
+                        <ul id="todo-list-preview" class="space-y-1.5 max-h-24 overflow-y-auto text-sm"></ul>
+                    </div>
+
+                    <textarea id="note-body-input" placeholder="Write your thoughts here... Markdown supported (**bold**, *italic*, # heading) 💭" class="flex-grow resize-none border border-[#f0eae1] p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#e4d8f0] mb-4 text-sm bg-[#fcfbf9] text-[#5c5552]"></textarea>
+                    
+                    <div class="flex justify-end space-x-3">
+                        <button onclick="cancelEdit()" class="px-5 py-2 bg-[#f0eae1] hover:bg-[#e4dbd1] text-[#7a6f7b] rounded-full font-semibold transition">Cancel</button>
+                        <button onclick="saveNote()" class="px-5 py-2 bg-[#b5d1ff] hover:bg-[#a3c5ff] text-white rounded-full font-semibold transition shadow-sm">Save Note 💖</button>
+                    </div>
+                </div>
+
+                <!-- Empty / Viewer State -->
+                <div id="viewer-container" class="flex flex-col h-full justify-center items-center text-[#b0a7b8] text-center p-6">
+                    <div class="text-5xl mb-3">🍵</div>
+                    <p class="text-base font-medium">Select a note or pick a day from the weekly calendar!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- JavaScript Application File -->
+    <script src="script.js"></script>
+</body>
+</html>
